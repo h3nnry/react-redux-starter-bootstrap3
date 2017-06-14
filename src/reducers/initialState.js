@@ -1,5 +1,3 @@
-import {EXPANDED_LEFT_MENU} from '../constants/actionTypes';
-
 export default {
   fuelSavings: {
     newMpg: '',
@@ -17,6 +15,8 @@ export default {
       threeYear: 0
     }
   },
-  leftMenuClass: EXPANDED_LEFT_MENU
+  header: {
+    expanded: true
+  }
 
 };

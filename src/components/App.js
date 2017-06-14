@@ -14,10 +14,10 @@ import {EXPANDED_LEFT_MENU, COLLAPSED_LEFT_MENU} from '../constants/actionTypes'
 // component at the top-level.
 class App extends React.Component {
   constructor(props, context) {
-    super(props, context)
+    super(props, context);
 
     this.state = {
-      leftMenuClass: EXPANDED_LEFT_MENU
+      expanded: true
     };
 
     this.toggleMenu = this.toggleMenu.bind(this);
@@ -25,15 +25,16 @@ class App extends React.Component {
 
   toggleMenu(event) {
     event.preventDefault();
-    let newClass = (this.state.leftMenuClass == EXPANDED_LEFT_MENU) ? COLLAPSED_LEFT_MENU : EXPANDED_LEFT_MENU;
-    this.props.actions.toggleMenu(newClass)
+    // this.props.actions.toggleMenu(newClass);
+    this.setState({
+        expanded: !this.state.expanded
+    });
   }
 
   render() {
-    // const {fuelSavings} = this.props;
     return (
-      <div className={"vertical-layout vertical-menu 2-columns fixed-navbar menu-" + this.props.leftMenuClass + " pace-done"}>
-        <Header toggleMenu={this.toggleMenu}/>
+      <div className={"vertical-layout vertical-menu 2-columns fixed-navbar menu-" + (this.state.expanded ? EXPANDED_LEFT_MENU : COLLAPSED_LEFT_MENU) + " pace-done"}>
+        <Header toggleMenu={this.toggleMenu} expanded={this.state.expanded}/>
         <LeftMenu/>
         <MainContent childProps={this.props.children}/>
         <Footer/>
@@ -48,7 +49,7 @@ App.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    leftMenuClass: state.leftMenuClass
+    header: state.header
   };
 }
 

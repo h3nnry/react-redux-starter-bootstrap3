@@ -1,13 +1,11 @@
 import React, {PropTypes} from 'react';
-import LogoImg from './images/logo/robust-logo-light.png';
-import LogoSmallImg from './images/logo/robust-logo-light-small.png';
 import AvatarS1 from './images/portrait/small/avatar-s-1.png';
 import AvatarS2 from './images/portrait/small/avatar-s-2.png';
 import AvatarS3 from './images/portrait/small/avatar-s-3.png';
 import AvatarS6 from './images/portrait/small/avatar-s-6.png';
 
 
-const Header = ({toggleMenu}) => {
+const Header = ({toggleMenu, expanded}) => {
   return (
     <div>
       <nav className="header-navbar navbar navbar-with-menu navbar-fixed-top navbar-dark navbar-shadow">
@@ -15,7 +13,7 @@ const Header = ({toggleMenu}) => {
           <div className="navbar-header">
             <ul className="nav navbar-nav">
               <li className="nav-item mobile-menu hidden-md-up float-xs-left"><a className="nav-link nav-menu-main menu-toggle hidden-xs"><span className="glyphicon glyphicon-align-justify"></span></a></li>
-              <li className="nav-item"><a href="#" className="navbar-brand nav-link"><img alt="branding logo" src={LogoImg} data-expand={LogoImg} data-collapse={LogoSmallImg} className="brand-logo" /></a></li>
+              <li className="nav-item"><a href="#" className="navbar-brand nav-link"><img alt="branding logo" src={expanded ? '/robust-logo-light.png' : 'robust-logo-light-small.png'} data-expand='/robust-logo-light.png' data-collapse='/robust-logo-light-small.png' className="brand-logo" /></a></li>
               <li className="nav-item hidden-md-up float-xs-right"><a data-toggle="collapse" data-target="#navbar-mobile" className="nav-link open-navbar-container"><i className="icon-ellipsis pe-2x icon-icon-rotate-right-right"></i></a></li>
             </ul>
           </div>
@@ -132,7 +130,8 @@ const Header = ({toggleMenu}) => {
 };
 
 Header.propTypes = {
-  toggleMenu: PropTypes.func.isRequired
+  toggleMenu: PropTypes.func.isRequired,
+  expanded: PropTypes.bool.isRequired,
 };
 
 export default Header;
