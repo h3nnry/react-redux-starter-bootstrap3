@@ -3,9 +3,11 @@ import AvatarS1 from './images/portrait/small/avatar-s-1.png';
 import AvatarS2 from './images/portrait/small/avatar-s-2.png';
 import AvatarS3 from './images/portrait/small/avatar-s-3.png';
 import AvatarS6 from './images/portrait/small/avatar-s-6.png';
+import Logo from './images/logo/robust-logo-light.png';
+import SmallLogo from './images/logo/robust-logo-light-small.png';
 
 
-const Header = ({toggleMenu, expanded}) => {
+const Header = ({toggleMenu, expanded, handleFullScreen, fullscreen}) => {
   return (
     <div>
       <nav className="header-navbar navbar navbar-with-menu navbar-fixed-top navbar-dark navbar-shadow">
@@ -13,7 +15,7 @@ const Header = ({toggleMenu, expanded}) => {
           <div className="navbar-header">
             <ul className="nav navbar-nav">
               <li className="nav-item mobile-menu hidden-md-up float-xs-left"><a className="nav-link nav-menu-main menu-toggle hidden-xs"><span className="glyphicon glyphicon-align-justify"></span></a></li>
-              <li className="nav-item"><a href="#" className="navbar-brand nav-link"><img alt="branding logo" src={expanded ? '/robust-logo-light.png' : 'robust-logo-light-small.png'} data-expand='/robust-logo-light.png' data-collapse='/robust-logo-light-small.png' className="brand-logo" /></a></li>
+              <li className="nav-item"><a href="#" className="navbar-brand nav-link"><img alt="branding logo" src={expanded ? Logo : SmallLogo} data-expand={Logo} data-collapse={Logo} className="brand-logo" /></a></li>
               <li className="nav-item hidden-md-up float-xs-right"><a data-toggle="collapse" data-target="#navbar-mobile" className="nav-link open-navbar-container"><i className="icon-ellipsis pe-2x icon-icon-rotate-right-right"></i></a></li>
             </ul>
           </div>
@@ -21,7 +23,7 @@ const Header = ({toggleMenu, expanded}) => {
             <div id="navbar-mobile" className="collapse navbar-toggleable-sm">
               <ul className="nav navbar-nav">
                 <li className="nav-item hidden-sm-down"><a href="#" className="nav-link nav-menu-main menu-toggle hidden-xs" onClick={toggleMenu}><i className="icon-menu5"></i></a></li>
-                <li className="nav-item hidden-sm-down"><a href="#" className="nav-link nav-link-expand"><i className="ficon icon-expand2"></i></a></li>
+                <li className="nav-item hidden-sm-down"><a href="#" className="nav-link nav-link-expand" onClick={handleFullScreen}><i className={"ficon " + (!fullscreen ? "icon-expand2" : "icon-contract")}></i></a></li>
               </ul>
               <ul className="nav navbar-nav float-xs-right">
                 <li className="dropdown dropdown-language nav-item"><a id="dropdown-flag" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" className="dropdown-toggle nav-link"><i className="flag-icon flag-icon-gb"></i><span className="selected-language">English</span></a>

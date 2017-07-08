@@ -1,12 +1,10 @@
 import React from 'react';
 
-const LeftMenu = () => {
+const LeftMenu = ({ search }) => {
   return (
     <div>
       <div data-scroll-to-active="true" className="main-menu menu-fixed menu-dark menu-accordion menu-shadow">
-        <div className="main-menu-header">
-          <input type="text" placeholder="Search" className="menu-search form-control round"/>
-        </div>
+        { search }
         <div className="main-menu-content">
           <ul id="main-menu-navigation" data-menu="menu-navigation" className="navigation navigation-main">
             <li className="nav-item has-sub"><a href="#l"><i className="icon-home3"></i><span data-i18n="nav.dash.main" className="menu-title">Dashboard</span><span className="tag tag tag-primary tag-pill float-xs-right mr-2">2</span></a>
